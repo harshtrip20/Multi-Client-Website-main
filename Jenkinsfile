@@ -4,7 +4,7 @@ tools{maven 'MCW'}
 stages{
 stage('Checkout'){
 steps{
-git branch: 'master', url: 'https://github.com/harshtrip20/Multi-Client-Website-main.git'
+git branch: 'main', url: 'https://github.com/harshtrip20/Multi-Client-Website-main.git'
 }
 }
 stage('Build'){

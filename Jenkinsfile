@@ -1,10 +1,7 @@
 pipeline{
-agent any
-tools{
-maven 'MCW'
-jdk 'JAVA_HOME'
-}
-stages {
+agent{label 'main'}
+tools{maven 'M3'}
+stages{
 stage('Checkout'){
 steps{
 git branch: 'master', url: 'https://github.com/harshtrip20/Multi-Client-Website-main.git'
@@ -23,19 +20,19 @@ bat 'mvn package'
 stage('Create Image')
 {
 steps{
-bat 'docker build -t image1 .'
+bat 'docker build -t image_name:v1 .'
 }
 }
 stage('Create Container')
 {
 steps{
-bat 'docker container create -p 8081:8081 --name container1 image1:v1'
+bat 'docker container create -p 8081:8081 --name container_name image_name:v1'
 }
 }
 stage('Start Container')
 {
 steps{
-bat 'docker start container1'
+bat 'docker start container_name'
 }
 }
 }
